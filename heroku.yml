@@ -1,5 +1,5 @@
 build:
   docker:
     web: Dockerfile
-run:
-  web: bokeh serve --port=$PORT --address=0.0.0.0 --allow-websocket-origin=oigawaalosavnir2.herokuapp.com --use-xheaders hvplottest.py
+# run:
+  # web: bokeh serve --port=$PORT --address=0.0.0.0 --allow-websocket-origin=oigawaalosavnir2.herokuapp.com --use-xheaders hvplottest.py
