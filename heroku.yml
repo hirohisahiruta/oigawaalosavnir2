@@ -2,4 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: bokeh serve --port=$PORT --address=0.0.0.0 --allow-websocket-origin=oigawaalosavnir2.herokuapp.com --use-xheaders alos_avnir2_ndwi.py
+  web: bokeh serve --port=$PORT --address=0.0.0.0 --allow-websocket-origin=oigawaalosavnir2.herokuapp.com --use-xheaders alos_avnir2_ndwi.ipynb
