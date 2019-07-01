@@ -20,7 +20,7 @@ renderer = hv.Store.renderers['bokeh'].instance(mode='server', holomap='server')
 # In[ ]:
 
 
-# ds = xr.open_dataset('data/ndwi.nc')
+ds = xr.open_dataset('data/ndwi.nc')
 
 
 # In[ ]:
@@ -54,18 +54,18 @@ dfQ = pd.read_csv(f, engine='python', index_col=0, parse_dates=True, header=None
 dfQ = dfQ.replace(-9999, np.nan)
 
 Q = hv.Curve( (dfQ.index,dfQ.values.flatten()),vdims='Discharge at Kanza' ).options(width=500,height=300)
-# figs2 = {}
-# for t in ds.t.values:
-#     figs2[t] = hv.VLine(t).options(color='r',)
-#     
-# vl = gv.HoloMap(figs2, kdims='time')
+figs2 = {}
+for t in ds.t.values:
+    figs2[t] = hv.VLine(t).options(color='r',)
+    
+vl = gv.HoloMap(figs2, kdims='time')
 
 
 # In[ ]:
 
 
 # fig = ( geomap * rasterize(hmap, precompute=True) + Q * rasterize(vl, precompute=True) ).cols(1)
-fig =  Q #* rasterize(vl, precompute=True) 
+fig =  Q * vl #rasterize(vl, precompute=True) 
 
 doc,_ = renderer(fig)
 doc.title = "Oigawa_Visualized_by_Alos-Avnir2"
