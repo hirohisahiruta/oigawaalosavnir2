@@ -10,7 +10,7 @@ import holoviews as hv
 import cartopy.crs as ccrs
 import numpy as np
 import pandas as pd
-# from holoviews.operation.datashader import rasterize
+from holoviews.operation.datashader import rasterize
 
 gv.extension('bokeh', logo=False)
 hv.extension('bokeh', logo=False)
@@ -65,7 +65,7 @@ vl = gv.HoloMap(figs2, kdims='time')
 
 
 # fig = ( geomap * rasterize(hmap, precompute=True) + Q * rasterize(vl, precompute=True) ).cols(1)
-fig =  Q * vl #rasterize(vl, precompute=True) 
+fig =  Q * rasterize(vl, precompute=True) 
 
 doc,_ = renderer(fig)
 doc.title = "Oigawa_Visualized_by_Alos-Avnir2"
