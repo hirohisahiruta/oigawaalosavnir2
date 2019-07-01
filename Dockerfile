@@ -5,5 +5,6 @@ FROM continuumio/miniconda3
   # && 
 RUN conda install -y bokeh xarray holoviews geoviews cartopy numpy pandas
 WORKDIR /app
-COPY alos_avnir2_ndwi.ipynb /app
-COPY data/ /app/data/
+# COPY alos_avnir2_ndwi.ipynb /app
+# COPY data/ /app/data/
+COPY hvplottest.py /app
