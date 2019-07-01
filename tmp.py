@@ -65,7 +65,7 @@ vl = gv.HoloMap(figs2, kdims='time')
 
 
 # fig = ( geomap * rasterize(hmap, precompute=True) + Q * rasterize(vl, precompute=True) ).cols(1)
-fig =  Q * rasterize(vl, precompute=True) 
+fig =  Q * rasterize(vl, precompute=False) 
 
 doc,_ = renderer(fig)
 doc.title = "Oigawa_Visualized_by_Alos-Avnir2"
