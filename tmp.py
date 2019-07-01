@@ -8,7 +8,7 @@ import xarray as xr
 import geoviews as gv
 import holoviews as hv
 import cartopy.crs as ccrs
-# import numpy as np
+import numpy as np
 import pandas as pd
 # from holoviews.operation.datashader import rasterize
 
