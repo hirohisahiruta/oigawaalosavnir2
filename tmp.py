@@ -10,18 +10,15 @@ import holoviews as hv
 import cartopy.crs as ccrs
 import numpy as np
 import pandas as pd
-from holoviews.operation.datashader import rasterize
+from holoviews.operation.datashader import rasterize, datashade
 
 gv.extension('bokeh', logo=False)
 hv.extension('bokeh', logo=False)
 renderer = hv.Store.renderers['bokeh'].instance(mode='server', holomap='server')
 
-
 # In[ ]:
 
-
 ds = xr.open_dataset('data/ndwi.nc')
-
 
 # In[ ]:
 
@@ -40,9 +37,7 @@ ds = xr.open_dataset('data/ndwi.nc')
 # url = 'https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{Z}/{X}/{Y}.jpg'
 # geomap = gv.WMTS(url, crs=outcrs).options(width=500,height=400)
 
-
 # In[ ]:
-
 
 def parser(date):
     b = date.split(' ')
@@ -58,14 +53,12 @@ figs2 = {}
 for t in ds.t.values:
     figs2[t] = hv.VLine(t).options(color='r',)
     
-vl = gv.HoloMap(figs2, kdims='time')
-
+vl = hv.HoloMap(figs2, kdims='time')
 
 # In[ ]:
 
-
 # fig = ( geomap * rasterize(hmap, precompute=True) + Q * rasterize(vl, precompute=True) ).cols(1)
-fig =  Q * rasterize(vl, precompute=False) 
+fig = Q * rasterize(vl, precompute=True)
 
 doc,_ = renderer(fig)
 doc.title = "Oigawa_Visualized_by_Alos-Avnir2"
